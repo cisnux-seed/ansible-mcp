@@ -5,3 +5,5 @@ services:
     restart: unless-stopped
     env_file:
       - .env
+    network_mode: host
+    command: ["uv", "run", "python", "ansible.py"]

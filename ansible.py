@@ -17,7 +17,7 @@ HEADERS = {
     "Content-Type": "application/json"
 }
 
-mcp = FastMCP("ansible")
+mcp = FastMCP("ansible", host=HOST, port=PORT)
 
 async def make_request(url: str, method: str = "GET", json: dict = None) -> Any:
     async with httpx.AsyncClient(verify=False) as client:
@@ -60,6 +60,6 @@ async def list_hosts() -> Any:
 if __name__ == "__main__":
     if TRANSPORT == "streamable-http":
         print(f"Starting AAP MCP server in streamable-http mode on {HOST}:{PORT}")
-        mcp.run(transport="streamable-http", host=HOST, port=PORT)
+        mcp.run(transport="streamable-http")
     else:
         mcp.run(transport="stdio")
