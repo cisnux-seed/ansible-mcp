@@ -1,0 +1,7 @@
+services:
+  ansible-mcp:
+    build: .
+    image: ansible-mcp:latest
+    restart: unless-stopped
+    env_file:
+      - .env
